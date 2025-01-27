@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Run Exe or Batch files with JavaScript</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .container {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+
+    button {
+      background-color: #ff0000;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      font-size: 16px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: #b37e00;
+    }
+
+    a {
+      display: block;
+      margin-top: 20px;
+      color: #ff7900;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <!--
+    <h1>Run Exe or Batch files with JavaScript</h1>
+    <button onclick="runBatchFile()">Start Dereja Service</button>
+    -->
+    
+    <button onclick="window.location.href='start_server.bat'">Start Dereja Service</button>
+  </div>
+  <script>
+    function runBatchFile() {
+      const { exec } = require('child_process');
+      exec('start cmd.exe /K "app\\backend\\start_server.bat"', (error, stdout, stderr) => {
+        if (error) {
+          console.error(`Error: ${error.message}`);
+          return;
+        }
+        if (stderr) {
+          console.error(`Stderr: ${stderr}`);
+          return;
+        }
+        console.log(`Stdout: ${stdout}`);
+      });
+    }
+  </script>
+</body>
+
+</html>

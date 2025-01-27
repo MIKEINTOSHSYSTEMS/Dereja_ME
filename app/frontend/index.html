@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Dereja M&E System</title>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="sara mazal lessons">
+<meta name="keywords" content="HTML, CSS, JavaScript, mazal, icons">
+<meta name="author" content="Sara Mazal">
+<!--  SGVsbG8hIE15IG5hbWUgaXMgU2FyYSBNYXphbC4gV2VsY29tZSB0byBteSBDb2RlUGVuIQ== -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@200;300;400;500&family=Raleway:wght@100;200;300;400;500&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+<!-- SGVsbG8hIE15IG5hbWUgaXMgU2FyYSBNYXphbC4gV2VsY29tZSB0byBteSBDb2RlUGVuOiBodHRwczovL2NvZGVwZW4uaW8vU2FyYW1hemFsICYgR2l0SHViOiBodHRwczovL2dpdGh1Yi5jb20vc2FyYW1hemFs -->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous" />
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/particlesjs/2.2.3/particles.min.js"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+<link rel="stylesheet" href="./style.css">
+<script src="./context-menu.js"></script>
+<script>
+  //Start Main Menu Configuration Scripts
+  //var gui = require('nw.gui');
+  var dereja_menu = new nw.Menu({ type: 'menubar' });
+  var submenu = new nw.Menu();
+  submenu.append(new nw.MenuItem({ label: 'Home', click: function () { location.href = './index.html'; } }));
+  submenu.append(new nw.MenuItem({ label: 'Login', click: function () { location.href = './app_view.html'; } }));
+ // submenu.append(new nw.MenuItem({ label: 'Test Login', click: function () { window.open('app/frontend/app_view.html', '_self', false); } }));
+  submenu.append(new nw.MenuItem({
+    label: 'Quit', click: function () {
+      nw.App.quit();
+    }
+  }));
+
+  var submenuedit = new nw.Menu(); 
+    submenuedit.append(new nw.MenuItem({
+      label: 'Cut', click: function () {
+        document.execCommand("cut");
+      }
+    }));
+    submenuedit.append(new nw.MenuItem({
+      label: 'Copy', click: function () {
+        document.execCommand("copy");
+      }
+    }));
+    submenuedit.append(new nw.MenuItem({
+      label: 'Paste', click: function () {
+        document.execCommand("paste");
+      }
+    }));
+  submenuedit.append(new nw.MenuItem({ label: 'Select All' }));
+  submenuedit.append(new nw.MenuItem({ label: 'Print' }));
+
+  var submenuview = new nw.Menu();
+    submenuview.append(new nw.MenuItem({ label: 'Refresh', click: function () { location.href = '#'; } }));
+        //submenuview.append(new nw.MenuItem({label: 'Zoom +' }));
+        //submenuview.append(new nw.MenuItem({label: 'Zoom -' }));
+    submenuview.append(new nw.MenuItem({ label: 'View Platform Spec', click: function () { nw.Window.open('app/frontend/spec.html'); } }));
+
+  var submenuhelp = new nw.Menu();
+      submenuhelp.append(new nw.MenuItem({ label: 'User Guide', click: function () { nw.Window.open('app/frontend/guide.html'); } }));
+        submenuhelp.append(new nw.MenuItem({ label: 'Check for Update', click: function () { nw.Window.open('app/frontend/update.html'); } }));
+        submenuhelp.append(new nw.MenuItem({ label: 'License', click: function () { nw.Window.open('app/frontend/license.html'); } }));
+        submenuhelp.append(new nw.MenuItem({ label: 'Server Status', click: function () { nw.Window.open('app/frontend/serverstate.html'); } }));
+        submenuhelp.append(new nw.MenuItem({ label: 'Developer Menu', click: function () { nw.Window.get().showDevTools(); } }));
+        submenuhelp.append(new nw.MenuItem({ label: 'About Dereja M&E', click: function () { nw.Window.open('app/frontend/about.html'); } }));
+  // the menu item appended should have a submenu
+  dereja_menu.append(new nw.MenuItem({
+    label: 'File',
+    submenu: submenu
+  }));
+
+  dereja_menu.append(new nw.MenuItem({
+    label: 'Edit',
+    submenu: submenuedit
+  }));
+  dereja_menu.append(new nw.MenuItem({
+    label: 'View',
+    submenu: submenuview
+  }));
+  dereja_menu.append(new nw.MenuItem({
+    label: 'Help',
+    submenu: submenuhelp
+  }));
+  nw.Window.get().menu = dereja_menu;
+  win.menu = dereja_menu;
+
+//End Main Menu Configuration Scripts
+
+
+  (function () {
+    var gui = require("nw.gui");
+
+    var menu = new gui.Menu;
+
+    menu.append(new gui.MenuItem({
+      label: "Cut",
+      click: function () {
+        document.execCommand("cut");
+      }
+    }));
+
+    menu.append(new gui.MenuItem({
+      label: "Copy",
+      click: function () {
+        document.execCommand("copy");
+      }
+    }));
+
+    menu.append(new gui.MenuItem({
+      label: "Paste",
+      click: function () {
+        document.execCommand("paste");
+      }
+    }));
+
+    document.addEventListener("contextmenu", function (e) {
+      e.preventDefault();
+      if (e.target instanceof HTMLInputElement || e.target instanceof HTMLTextAreaElement || e.target.isContentEditable) {
+        menu.popup(e.x, e.y);
+      }
+    });
+  }());
+
+</script>
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<sectio class="nav">
+  <div><img src="dereja.svg" alt="Dereja M&E System Logo" height="310" width="640"></div>
+  <!--<h1>M&E System</h1>-->
+  <!--<h1>Hello...!</h1>-->
+  <h1></h1>
+  <!--<h3 class="span loader"><span class="m">Your</span><span class="m">&nbsp;</span><span class="m">A</span><span class="m">I</span><span class="m">O</span><span class="m">&nbsp;</span><span class="m">software</span><span class="m">&nbsp;</span><span class="m">Solutions</span><span class="m">&nbsp;</span><span class="m">Provider</span><span class="m">&nbsp;</span><span class="m"> </span><span class="m"> </span><span class="m">&nbsp;</span><span class="m">&nbsp;</span><span class="m"></span><span class="m"></span><span class="m"></span><span class="m"></span><span class="m"></span><span class="m"></span></h3>-->
+  <h3 class="span loader"><span class="m">Monitoring</span><span class="m">&nbsp;</span><span class="m">a</span><span class="m">n</span><span class="m">d</span><span class="m">&nbsp;</span><span class="m">Evaluation</span><span class="m">&nbsp;</span><span class="m">System</span><span class="m">&nbsp;</span><span class="m"></span><span class="m">&nbsp;</span><span class="m"> </span><span class="m"> </span><span class="m">&nbsp;</span><span class="m">&nbsp;</span><span class="m"></span><span class="m"></span><span class="m"></span><span class="m"></span><span class="m"></span><span class="m"></span></h3>
+  <div class="nav-container"><a class="nav-tab" href="#tab-svelte">Start</a><a class="nav-tab" href="#tab-esbuild">User Guide</a><a class="nav-tab" href="#tab-next">Notice</a><a class="nav-tab" href="#tab-typescript">Support</a><a class="nav-tab" href="#tab-vite">Contact</a><span class="nav-tab-slider"></span></div>
+</sectio>
+<main class="main">
+    <style type="text/css">
+      .context-menu {
+        position: absolute;
+        text-align: center;
+        background: lightgray;
+        border: 1px solid black;
+      }
+    
+      .context-menu ul {
+        padding: 0px;
+        margin: 0px;
+        min-width: 150px;
+        list-style: none;
+      }
+    
+      .context-menu ul li {
+        padding-bottom: 7px;
+        padding-top: 7px;
+        border: 1px solid black;
+      }
+    
+      .context-menu ul li a {
+        text-decoration: none;
+        color: black;
+      }
+    
+      .context-menu ul li:hover {
+        background: darkgray;
+      }
+    </style>
+    
+    <div id="contextMenu" class="context-menu" style="display:none">
+      <ul>
+        <li><a href="#">Dereja M&E</a></li>
+        <li><a href="#">Element-2</a></li>
+        <li><a href="#">Element-3</a></li>
+        <li><a href="#">Element-4</a></li>
+        <li><a href="#">Element-5</a></li>
+        <li><a href="#">Element-6</a></li>
+        <li><a href="#">Element-7</a></li>
+      </ul>
+    </div>
+    
+    <script>
+      document.onclick = hideMenu;
+      document.oncontextmenu = rightClick;
+
+      function hideMenu() {
+        document.getElementById(
+          "contextMenu").style.display = "none"
+      }
+
+      function rightClick(e) {
+        e.preventDefault();
+
+        if (document.getElementById(
+          "contextMenu").style.display == "block")
+          hideMenu();
+        else {
+          var menu = document
+            .getElementById("contextMenu")
+
+          menu.style.display = 'block';
+          menu.style.left = e.pageX + "px";
+          menu.style.top = e.pageY + "px";
+        }
+      }
+    </script>
+<section class="slider" id="tab-svelte">
+  <h1>Welcome</h1>
+  <h2>
+    <!--<p style="color: red;"><br>Click on the Button Below to -></p>-->
+    <a href="/app/frontend/app_view.html" class="login-button">Login</a>
+  </h2>
+  <br>
+  <br>
+  <p>
+    <font color="#210E01FF"><br>
+      <!--<h2>Check Server Status</h2>-->
+    </font>
+    <a href="#tab-svelte">
+      <h2>⇓</h2>
+    </a>
+  </p>
+  <iframe style="height: 100px; width: 700px;" src="../backend/server.html"></iframe>
+</section>
+
+<style>
+  .slider {
+    text-align: center;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .login-button {
+    display: inline-block;
+    padding: 10px 20px;
+    margin-top: 10px;
+    background-color: #ff7900;
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+  }
+
+  .login-button:hover {
+    background-color: #ff0000;
+  }
+
+  iframe {
+    margin-top: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+</style>
+  <section class="slider" id="tab-esbuild">
+    <h1>Dereja M&E User Guide</h1>
+    <h2>We Provide the state of the art Best Quality AIO M&E Systems that's right for you!</h2>
+  </section>
+  <section class="slider" id="tab-next">
+    <h1>Notice</h1>
+    <h2>We have so much notices and articles that you may want to explore further!</h2>
+  </section>
+  <section class="slider" id="tab-typescript">
+    <h1>Support</h1>
+    <h2>MERQ Consultancy has the best experienced, talented and Professional Team Composition always ready to help you with your needs at all times (24/7)</h2>
+  </section>
+  <section class="slider" id="tab-vite">
+    <h1>Contact Us NOW!</h1>
+    <h2>MERQ Consultancy</h2>
+    <h2>Email:</h2>
+    <h2>Phone:</h2>
+    <h2>Location:</h2>
+  </section>
+</main>
+<canvas class="background"></canvas><!-- SGVsbG8hIE15IG5hbWUgaXMgU2FyYSBNYXphbC4gV2VsY29tZSB0byBteSBDb2RlUGVuIQ== -->
+<!-- partial -->
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js'></script><script  src="./script.js"></script>
+
+</body>
+</html>

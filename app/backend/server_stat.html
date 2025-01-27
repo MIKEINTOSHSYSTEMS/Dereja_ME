@@ -1,0 +1,41 @@
+
+
+<html>
+<head>
+    <title>Application Executer</title>
+    <HTA:APPLICATION ID="oMyApp" 
+     APPLICATIONNAME="Application Executer" 
+     BORDER="no"
+     CAPTION="no"
+     SHOWINTASKBAR="yes"
+     SINGLEINSTANCE="yes"
+     SYSMENU="yes"
+     SCROLL="no"
+     WINDOWSTATE="normal">
+    <script type="text/javascript" language="javascript">
+        function RunFile() {
+  WshShell = new ActiveXObject("WScript.Shell");
+  //WshShell.Run("c:/windows/system32/notepad.exe", 1, false);
+  //WshShell.Run("C:\\Users\\Administrator\\Documents\\DEVELOPMENT\\MERQ_CONSULTANCY\\MOMONA\\SRC\\MOMONA_OFFLINE_PROJECT\\RAW\\MOMONA_Web_Desk_App\\MOMONA_Web_Desk_App\\public\\MOMONA_SRV\\start_server.bat", 1, false);
+  WshShell.Run("\\app\\backend\\start_server.bat", 1, false);
+        }
+    </script>
+</head>
+<body>
+ <input type="button" value="Run Notepad" onclick="RunFile();"/>
+ <br>
+<br>
+<!--\\public\\MOMONA_SRV\\start_server.bat
+<input type="button" value="Launch MOMONA Server" onclick="window.open('D:\\DATA_BACKUP\\DEVELOPMENTS\\MIKEINTOSH_SYSTEMS\\MIKEINTOSH\\MIKEINTOSH_Offline_Projects\\MOMONA_Web_Desk_App\\public\\MOMONA_SRV\\start_server.bat')" />
+
+<input type="button" value="Launch MOMONA Server" onclick="window.open('C:\\Users\\Administrator\\Documents\\DEVELOPMENT\\MERQ_CONSULTANCY\\MOMONA\\SRC\\MOMONA_OFFLINE_PROJECT\\RAW\\MOMONA_Web_Desk_App\\MOMONA_Web_Desk_App\\public\\MOMONA_SRV\\start_server.bat')" />
+
+
+
+-->
+<br>
+<a href="start_server.bat">TEST</a>
+</body>
+</html>
+
+

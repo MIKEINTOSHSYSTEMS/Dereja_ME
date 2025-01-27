@@ -1,0 +1,29 @@
+{
+  "main"  : "index.html",
+  "name"  : "DEREJA_ME_System",
+  "scripts": {
+    "dev": "nw app/",
+    "prod": "nwbuild --platforms win32,win64,osx64,linux32,linux64 --buildDir dist/ src/"
+  },
+  "keywords": [],
+  "author": "Michael Kifle Teferra",
+  "license": "ISC",
+  "devDependencies": {
+    "nw": "^0.72.0",
+    "nw-builder": "^4.0.8"
+  },
+
+  "window": {
+    "toolbar" : true,
+    "webView" : true, 
+    "transparent": false,
+    "resizable": true,
+    "frame": true,
+    "always-on-top": false,
+      "icon"    : "app/frontend/icons/dereja.png",
+      "width"   : 1200,
+      "height"  : 700,
+      "position": "center"
+  }
+  
+}
