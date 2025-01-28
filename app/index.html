@@ -1,0 +1,444 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Dereja Monitoring and Evaluation System V0.7 [FOR BETA TESTING PURPOSE ONLY]</title>
+    <!-- <script src="javascript/bundle.js"></script>  -->
+    
+    <!--  <script>
+
+        addHideableMenu();
+
+        function addHideableMenu() {
+            let win = nw.Window.get();
+            let mnu = new nw.Menu({ type: 'menubar' });
+            let submenu = new nw.Menu();
+            submenu.append(new nw.MenuItem({ label: 'Hide', click: function () { win.menu = null; } }));
+            mnu.append(new nw.MenuItem({ label: 'Menu', submenu: submenu }));
+            win.menu = mnu;
+        }
+
+    </script> -->
+   
+<!--
+TEST SCRIPT
+
+    // Create an empty menubar
+        var menu = new nw.Menu({ type: 'menubar' });
+
+        // Create a submenu as the 2nd level menu
+        var submenu = new nw.Menu();
+        submenu.append(new nw.MenuItem({ label: 'Item A' }));
+        submenu.append(new nw.MenuItem({ label: 'Item B' }));
+
+        // Create and append the 1st level menu to the menubar
+        menu.append(new nw.MenuItem({
+            label: 'First Menu',
+            submenu: submenu
+        }));
+
+        // Assign it to `window.menu` to get the menu displayed
+        nw.Window.get().menu = menu;
+    
+
+        document.body.addEventListener('contextmenu', function (ev) {
+                ev.preventDefault();
+                menu.popup(ev.x, ev.y);
+                return false;
+            });
+
+-->
+
+<!--
+
+        <script> 
+    var dereja_menu = new nw.Menu({ type: 'menubar' });
+    var dereja_edit = new nw.Menu({ type: 'menubar' });
+    var dereja_view = new nw.Menu({ type: 'menubar' });
+    var dereja_help = new nw.Menu({ type: 'menubar' });
+    var submenu = new nw.Menu();
+    var submenu2 = new nw.Menu();
+    var submenu3 = new nw.Menu();
+    var submenu4 = new nw.Menu();
+        submenu.append(new nw.MenuItem({ label: 'Home' }));
+        submenu.append(new nw.MenuItem({ label: 'Quit' }));
+        submenu2.append(new nw.MenuItem({ label: 'Copy' }));
+        submenu2.append(new nw.MenuItem({ label: 'Paste' }));
+        submenu3.append(new nw.MenuItem({ label: 'Refresh' }));
+        submenu4.append(new nw.MenuItem({ label: 'Help files' }));
+        submenu4.append(new nw.MenuItem({ label: 'About' }));
+
+        // the menu item appended should have a submenu
+        dereja_menu.append(new nw.MenuItem({
+            label: 'File', 
+            submenu: submenu
+        }));
+        dereja_edit.append(new nw.MenuItem({
+                label: 'Edit',
+                submenu: submenu2
+            }));
+        dereja_menu.append(new nw.MenuItem({
+        label: 'View',
+        submenu: submenu3
+    }));
+        dereja_menu.append(new nw.MenuItem({
+        label: 'Help',
+        submenu: submenu4
+    }));
+        nw.Window.get().menu = dereja_menu;
+        nw.Window.get().menu = dereja_edit;
+        nw.Window.get().menu = dereja_view;
+        nw.Window.get().menu = dereja_help;
+
+        
+    </script>
+-->
+
+<!--
+
+    Crash scripts goes here
+
+-->
+<script src="./app/frontend/context-menu.js"></script>
+    <script type="text/javascript"> 
+    /* 
+    
+    var gui = require('nw.gui');
+    var win = gui.Window.get();
+    var menuBar = new gui.Menu({ type: "menubar" });
+        //menuBar.createMacBuiltin("NW.js Demo");
+        win.menu = menuBar;
+
+        var developMenu = new gui.Menu();
+        var developToggleitem = new gui.MenuItem({
+            label: 'Toggle Dev Tools',
+            click: function () {
+                if (win.isDevToolsOpen())
+                    win.closeDevTools();
+                else
+                    win.showDevTools();
+            }
+        });
+
+        developMenu.append(developToggleitem);
+        win.menu.append(new gui.MenuItem({
+            label: 'Develop',
+            submenu: developMenu
+        }));
+
+
+    */
+    
+
+
+
+    /* 
+    
+    //Start Main Menu Configuration Scripts
+
+    var dereja_menu = new nw.Menu({ type: 'menubar' });
+    var submenu = new nw.Menu();
+        submenu.append(new nw.MenuItem({ label: 'Home', click: function () {  nw.Window.open('app/frontend/app_view.html');  }}));
+        submenu.append(new nw.MenuItem({ label: 'Quit', click: function () {
+                    nw.App.quit();
+                } }));
+
+            var submenuedit = new nw.Menu();
+                submenuedit.append(new nw.MenuItem({ label: 'Copy' }));
+                submenuedit.append(new nw.MenuItem({ label: 'Paste' }));
+                submenuedit.append(new nw.MenuItem({ label: 'Select All' }));
+                submenuedit.append(new nw.MenuItem({ label: 'Print' }));
+
+            var submenuview = new nw.Menu();
+                submenuview.append(new nw.MenuItem({ label: 'Refresh' }));
+                submenuview.append(new nw.MenuItem({ label: 'Zoom +' }));
+                submenuview.append(new nw.MenuItem({ label: 'Zoom -' }));
+
+            var submenuhelp = new nw.Menu();
+                submenuhelp.append(new nw.MenuItem({ label: 'User Guide' }));
+                submenuhelp.append(new nw.MenuItem({ label: 'Check for Update' }));
+                submenuhelp.append(new nw.MenuItem({ label: 'License' }));
+                submenuhelp.append(new nw.MenuItem({ label: 'About Dereja M&E' }));
+                submenuhelp.append(new nw.MenuItem({ label: 'Developer Menu' }));    
+                
+        // the menu item appended should have a submenu
+        dereja_menu.append(new nw.MenuItem({
+            label: 'File', 
+            submenu: submenu
+        }));
+        
+        dereja_menu.append(new nw.MenuItem({
+                label: 'Edit',
+                submenu: submenuedit
+            }));
+        dereja_menu.append(new nw.MenuItem({
+        label: 'View',
+        submenu: submenuview
+    }));
+        dereja_menu.append(new nw.MenuItem({
+        label: 'Help',
+        submenu: submenuhelp
+    }));
+        nw.Window.get().menu = dereja_menu;
+        win.menu = dereja_menu;
+
+//End Main Menu Configuration Scripts
+    
+    */
+
+        //Start Main Menu Configuration Scripts
+    //var gui = require('nw.gui');
+    var dereja_menu = new nw.Menu({ type: 'menubar' });
+    var submenu = new nw.Menu();
+    submenu.append(new nw.MenuItem({ label: 'Home', click: function () { location.href = './frontend/index.html'; } }));
+    submenu.append(new nw.MenuItem({ label: 'Login', click: function () { location.href= './frontend/app_view.html'; } }));
+    //submenu.append(new nw.MenuItem({ label: 'Test Login', click: function () { window.open('./frontend/app_view.html', '_self', false); } }));
+    submenu.append(new nw.MenuItem({
+        label: 'Quit', click: function () {
+            nw.App.quit();
+        }
+    }));
+
+    var submenuedit = new nw.Menu();
+            submenuedit.append(new nw.MenuItem({
+                    label: 'Cut', click: function () {
+                        document.execCommand("cut");
+                    }
+                }));
+                submenuedit.append(new nw.MenuItem({
+                    label: 'Copy', click: function () {
+                        document.execCommand("copy");
+                    }
+                }));
+                submenuedit.append(new nw.MenuItem({
+                    label: 'Paste', click: function () {
+                        document.execCommand("paste");
+                    }
+                }));
+    submenuedit.append(new nw.MenuItem({ label: 'Select All' }));
+    submenuedit.append(new nw.MenuItem({ label: 'Print' }));
+
+    var submenuview = new nw.Menu();
+        submenuview.append(new nw.MenuItem({ label: 'Refresh', click: function () { location.href = '#'; } }));
+        //submenuview.append(new nw.MenuItem({label: 'Zoom +' }));
+        //submenuview.append(new nw.MenuItem({label: 'Zoom -' }));
+        submenuview.append(new nw.MenuItem({ label: 'View Platform Spec', click: function () { nw.Window.open('app/frontend/spec.html'); } }));
+
+    var submenuhelp = new nw.Menu();
+    submenuhelp.append(new nw.MenuItem({ label: 'User Guide', click: function () { nw.Window.open('app/frontend/guide.html'); } }));
+    submenuhelp.append(new nw.MenuItem({ label: 'Check for Update', click: function () { nw.Window.open('app/frontend/update.html'); } }));
+    submenuhelp.append(new nw.MenuItem({ label: 'License', click: function () { nw.Window.open('app/frontend/license.html'); } }));
+    submenuhelp.append(new nw.MenuItem({ label: 'Server Status', click: function () { nw.Window.open('app/frontend/serverstate.html'); } }));
+    submenuhelp.append(new nw.MenuItem({ label: 'Developer Menu', click:function() { nw.Window.get().showDevTools(); } }));
+    submenuhelp.append(new nw.MenuItem({ label: 'About Dereja M&E', click: function () { nw.Window.open('app/frontend/about.html'); } }));
+
+    // the menu item appended should have a submenu
+    dereja_menu.append(new nw.MenuItem({
+        label: 'File',
+        submenu: submenu
+    }));
+
+    dereja_menu.append(new nw.MenuItem({
+        label: 'Edit',
+        submenu: submenuedit
+    }));
+    dereja_menu.append(new nw.MenuItem({
+        label: 'View',
+        submenu: submenuview
+    }));
+    dereja_menu.append(new nw.MenuItem({
+        label: 'Help',
+        submenu: submenuhelp
+    }));
+    nw.Window.get().menu = dereja_menu;
+    win.menu = dereja_menu;
+
+//End Main Menu Configuration Scripts
+
+
+    
+
+        /* Test Menu Script */
+
+    (function () {
+        var gui = require("nw.gui");
+
+        var menu = new gui.Menu;
+
+        menu.append(new gui.MenuItem({
+            label: "Cut",
+            click: function () {
+                document.execCommand("cut");
+            }
+        }));
+
+        menu.append(new gui.MenuItem({
+            label: "Copy",
+            click: function () {
+                document.execCommand("copy");
+            }
+        }));
+
+        menu.append(new gui.MenuItem({
+            label: "Paste",
+            click: function () {
+                document.execCommand("paste");
+            }
+        }));
+
+        document.addEventListener("contextmenu", function (e) {
+            e.preventDefault();
+            if (e.target instanceof HTMLInputElement || e.target instanceof HTMLTextAreaElement || e.target.isContentEditable) {
+                menu.popup(e.x, e.y);
+            }
+        });
+    }());
+
+        /* Test Menu Script */
+
+
+
+        // Context menu
+        
+        // OS Platform Details
+
+    /*    */
+
+
+    /*  const { app, Menu } = require('electron');
+const path = require('path');
+
+app.once('ready', () => {
+  const menu = Menu.buildFromTemplate([
+    {
+      label: 'File',
+      submenu: [
+        {
+          label: 'Open HTML File',
+          click() {
+            const win = new nw.Window({
+              title: 'HTML File',
+              width: 800,
+              height: 600,
+              resizable: true,
+              show: false
+            });
+            win.loadURL(path.join('file://', __dirname, 'index.html'));
+            win.show();
+          }
+        }
+      ]
+    }
+  ]);
+  Menu.setApplicationMenu(menu);
+});  */
+        
+    </script>
+    <style>
+        iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: visible;
+            border: 0;
+        }
+    </style>
+</head>
+    <style type="text/css">
+        .context-menu {
+            position: absolute;
+            text-align: center;
+            background: lightgray;
+            border: 1px solid black;
+        }
+    
+        .context-menu ul {
+            padding: 0px;
+            margin: 0px;
+            min-width: 150px;
+            list-style: none;
+        }
+    
+        .context-menu ul li {
+            padding-bottom: 7px;
+            padding-top: 7px;
+            border: 1px solid black;
+        }
+    
+        .context-menu ul li a {
+            text-decoration: none;
+            color: black;
+        }
+    
+        .context-menu ul li:hover {
+            background: darkgray;
+        }
+    </style>
+    
+    <div id="contextMenu" class="context-menu" style="display:none">
+        <ul>
+            <li><a href="#">Dereja M&E</a></li>
+            <li><a href="#">Element-2</a></li>
+            <li><a href="#">Element-3</a></li>
+            <li><a href="#">Element-4</a></li>
+            <li><a href="#">Element-5</a></li>
+            <li><a href="#">Element-6</a></li>
+            <li><a href="#">Element-7</a></li>
+        </ul>
+    </div>
+    
+    <script>
+        document.onclick = hideMenu;
+        document.oncontextmenu = rightClick;
+
+        function hideMenu() {
+            document.getElementById(
+                "contextMenu").style.display = "none"
+        }
+
+        function rightClick(e) {
+            e.preventDefault();
+
+            if (document.getElementById(
+                "contextMenu").style.display == "block")
+                hideMenu();
+            else {
+                var menu = document
+                    .getElementById("contextMenu")
+
+                menu.style.display = 'block';
+                menu.style.left = e.pageX + "px";
+                menu.style.top = e.pageY + "px";
+            }
+        }
+    </script>
+<body bgcolor="#FFFFFFFF">
+    <div align="center">
+<p></p>
+<br>
+<p>
+<h2>
+    <font color="orange"> Loading...</font>
+</h2>
+</p>
+<p>
+<h3>
+    <font color="red"> Please Wait!</font>
+</h3>
+</p>
+<p>
+    <img src="frontend/images/dereja.svg" height="310" width="640" alt="Dereja M&E System">
+</p>
+    </div>
+    
+    <br>
+    <!-- <iframe src="app/index.html"></iframe> -->
+    <!-- <iframe src="https://me.dereja.com/app/login.php"></iframe> -->
+    <!--<iframe src="app/frontend/index.html"></iframe>-->
+    <iframe src="./frontend/index.html"></iframe>
+</body>
+
+</html>

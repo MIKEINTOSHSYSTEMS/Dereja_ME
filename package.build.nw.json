@@ -1,0 +1,17 @@
+{
+  "name": "com.dereja.me",
+  "version": "0.1.1",
+  "main": "./app/frontend/index.html",
+    "window": {
+      "title": "DEREJA M&E System",
+      "icon": "./app/frontend/icons/dereja.ico",
+      "toolbar": true,
+      "width": 1200,
+      "height": 700,
+      "min_width": 1000,
+      "min_height": 700,
+      "max_width": 2400,
+      "max_height": 1000,
+      "position": "center"
+    }
+}
