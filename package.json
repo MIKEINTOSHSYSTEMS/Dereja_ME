@@ -1,12 +1,12 @@
 {
-  "name": "DEREJA_ME_System",
+  "name": "dereja-me-system",
   "version": "0.0.7",
   "main": "./app/index.html",
   "description": "Dereja Monitoring and Evaluation System",
-  "author": "Michael Kifle Teferra <mikeintoshsys@gmail.com> (https://mikeintoshsys.com)",
+  "author": "MERQ Consultancy PLC LLC",
   "node-remote": [
     "<all_urls>"
-  ],  
+  ],
   "private": true,
   "type": "module",
   "volta": {
@@ -14,19 +14,29 @@
     "node": "22.7.0"
   },
   "scripts": {
-    "start": "nw .",
-    "build:cli:nw": "nwbuild --mode=build --glob=false --flavor=sdk --cacheDir=./node_modules/nw --outDir=../build/nw --managedManifest=./nw.version.manifest.json ./app/",
+    "dev": "nw .",
+    "build:cli:nw": "nwbuild --mode=build --glob=false --flavor=sdk --cacheDir=./node_modules/nw --outDir=../build/nw --managedManifest=./nw.version.manifest.json ./",
     "build:clean": "rimraf ../build",
     "build:macos:arm64": "npm run build:clean && node ./tasks/build.macos.arm64.js",
     "build:macos:x64": "npm run build:clean && node ./tasks/build.macos.x64.js",
-    "build:win:x64": "npm run build:clean && node ./tasks/build.win.x64.js"
+    "build:win:x64": "npm run build:clean && nwbuild --mode=build --glob=false --flavor=sdk --cacheDir=./node_modules/nw --outDir=../build/nw --managedManifest=./nw.version.manifest.json ./app/"
+  },
+  "dependencies": {
+    "nw": "^0.92.0",
+    "nw-builder": "^4.13.8"
   },
   "devDependencies": {
     "base-volta-off-of-nwjs": "^1.0.5",
     "nw": "^0.92.0",
-    "nw-builder": "^4.9.0"
+    "nw-builder": "^4.13.8"
   },
   "chromium-args": "--enable-spell-checking",
+
+  "build": {
+    "win": {
+      "icon": "./app/frontend/icons/dereja.ico"
+    }
+  },
 
   "window": {
     "toolbar": true,

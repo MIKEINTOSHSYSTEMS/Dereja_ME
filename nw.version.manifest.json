@@ -4,7 +4,7 @@
   "lts": "v0.14.7",
   "versions": [
     {
-      "version": "v0.92.0",
+      "version": "v0.95.0",
       "date": "2025/01/29",
       "files": [
         "win-x64",
@@ -14,11 +14,37 @@
         "osx-x64",
         "osx-arm64"
       ],
-      "flavors": ["normal", "sdk"],
+      "flavors": [
+        "normal",
+        "sdk"
+      ],
       "components": {
         "node": "22.7.0",
-        "chromium": "129.0.6668.59"
+        "chromium": "134.0.6986.1"
       }
     }
-  ]
+  ],
+  "defaultBuild": {
+    "platforms": [
+      "win-x64"
+    ],
+    "flavor": "sdk",
+    "cacheDir": "./node_modules/nw",
+    "outputDir": "../build/nw",
+    "includeFiles": [
+      "./app/**/*",
+      "./javascript/**/*",
+      "./tasks/**/*",
+      "./package.json",
+      "./README.md",
+      "!./debug.log",
+      "!./node_modules/**",
+      "!./*.build.nw.json",
+      "!./*.hintrc",
+      "!./*.manifest.json"
+    ],
+    "icons": {
+      "win": "./app/frontend/icons/dereja.ico"
+    }
+  }
 }

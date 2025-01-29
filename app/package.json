@@ -1,9 +1,9 @@
 {
-  "name": "DEREJA_ME_System",
+  "name": "dereja-me-system",
   "version": "0.0.7",
   "main": "index.html",
   "description": "Dereja Monitoring and Evaluation System",
-  "author": "Michael Kifle Teferra <mikeintoshsys@gmail.com> (https://mikeintoshsys.com)",
+  "author": "MERQ Consultancy PLC LLC",
   "node-remote": [
     "<all_urls>"
   ],
@@ -15,7 +15,7 @@
   },
   "scripts": {
     "start": "nw .",
-    "build:cli:nw": "nwbuild --mode=build --glob=false --flavor=sdk --cacheDir=./node_modules/nw --outDir=../build/nw --managedManifest=./nw.version.manifest.json ./",
+    "build:cli:nw": "nwbuild --mode=build --glob=false --flavor=sdk --cacheDir=../node_modules/nw --outDir=../../build/nw --managedManifest=../nw.version.manifest.json ./",
     "build:clean": "rimraf ../../build",
     "build:macos:arm64": "npm run build:clean && node ../tasks/build.macos.arm64.js",
     "build:macos:x64": "npm run build:clean && node ../tasks/build.macos.x64.js",
@@ -34,7 +34,7 @@
     "resizable": true,
     "frame": true,
     "always-on-top": false,
-    "icon": "./app/frontend/icons/dereja.png",
+    "icon": "../app/frontend/icons/dereja.png",
     "width": 1200,
     "height": 700,
     "position": "center"

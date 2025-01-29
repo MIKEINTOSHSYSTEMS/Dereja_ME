@@ -1,9 +1,10 @@
 <!doctype html>
-<html>
+<html lang="en">
 
 <head>
     <meta charset="utf-8">
-    <title>Dereja Monitoring and Evaluation System V0.7 [FOR BETA TESTING PURPOSE ONLY]</title>
+    <title>Dereja Monitoring and Evaluation System V0.0.7 [FOR BETA TESTING PURPOSE ONLY]</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- <script src="javascript/bundle.js"></script>  -->
     
     <!--  <script>
@@ -100,7 +101,7 @@ TEST SCRIPT
     Crash scripts goes here
 
 -->
-<script src="./app/frontend/context-menu.js"></script>
+<script src="./frontend/context-menu.js"></script>
     <script type="text/javascript"> 
     /* 
     
@@ -139,7 +140,7 @@ TEST SCRIPT
 
     var dereja_menu = new nw.Menu({ type: 'menubar' });
     var submenu = new nw.Menu();
-        submenu.append(new nw.MenuItem({ label: 'Home', click: function () {  nw.Window.open('app/frontend/app_view.html');  }}));
+        submenu.append(new nw.MenuItem({ label: 'Home', click: function () {  nw.Window.open('./frontend/app_view.html');  }}));
         submenu.append(new nw.MenuItem({ label: 'Quit', click: function () {
                     nw.App.quit();
                 } }));
@@ -177,7 +178,7 @@ TEST SCRIPT
         submenu: submenuview
     }));
         dereja_menu.append(new nw.MenuItem({
-        label: 'Help',
+        label: 'Helps',
         submenu: submenuhelp
     }));
         nw.Window.get().menu = dereja_menu;
@@ -223,15 +224,15 @@ TEST SCRIPT
         submenuview.append(new nw.MenuItem({ label: 'Refresh', click: function () { location.href = '#'; } }));
         //submenuview.append(new nw.MenuItem({label: 'Zoom +' }));
         //submenuview.append(new nw.MenuItem({label: 'Zoom -' }));
-        submenuview.append(new nw.MenuItem({ label: 'View Platform Spec', click: function () { nw.Window.open('app/frontend/spec.html'); } }));
+        submenuview.append(new nw.MenuItem({ label: 'View Platform Spec', click: function () { nw.Window.open('./frontend/spec.html'); } }));
 
     var submenuhelp = new nw.Menu();
-    submenuhelp.append(new nw.MenuItem({ label: 'User Guide', click: function () { nw.Window.open('app/frontend/guide.html'); } }));
-    submenuhelp.append(new nw.MenuItem({ label: 'Check for Update', click: function () { nw.Window.open('app/frontend/update.html'); } }));
-    submenuhelp.append(new nw.MenuItem({ label: 'License', click: function () { nw.Window.open('app/frontend/license.html'); } }));
-    submenuhelp.append(new nw.MenuItem({ label: 'Server Status', click: function () { nw.Window.open('app/frontend/serverstate.html'); } }));
+    submenuhelp.append(new nw.MenuItem({ label: 'User Y Guide', click: function () { nw.Window.open('./guide.html'); } }));
+    submenuhelp.append(new nw.MenuItem({ label: 'Check for Update', click: function () { nw.Window.open('./frontend/update.html'); } }));
+    submenuhelp.append(new nw.MenuItem({ label: 'License', click: function () { nw.Window.open('./frontend/license.html'); } }));
+    submenuhelp.append(new nw.MenuItem({ label: 'Server Status', click: function () { nw.Window.open('./frontend/serverstate.html'); } }));
     submenuhelp.append(new nw.MenuItem({ label: 'Developer Menu', click:function() { nw.Window.get().showDevTools(); } }));
-    submenuhelp.append(new nw.MenuItem({ label: 'About Dereja M&E', click: function () { nw.Window.open('app/frontend/about.html'); } }));
+    submenuhelp.append(new nw.MenuItem({ label: 'About Dereja M&E', click: function () { nw.Window.open('./frontend/about.html'); } }));
 
     // the menu item appended should have a submenu
     dereja_menu.append(new nw.MenuItem({
@@ -377,10 +378,11 @@ app.once('ready', () => {
             background: darkgray;
         }
     </style>
-    
+    <!--
     <div id="contextMenu" class="context-menu" style="display:none">
         <ul>
             <li><a href="#">Dereja M&E</a></li>
+            <li><a href="#">Element-X</a></li>
             <li><a href="#">Element-2</a></li>
             <li><a href="#">Element-3</a></li>
             <li><a href="#">Element-4</a></li>
@@ -389,6 +391,8 @@ app.once('ready', () => {
             <li><a href="#">Element-7</a></li>
         </ul>
     </div>
+    
+    -->
     
     <script>
         document.onclick = hideMenu;
@@ -430,7 +434,7 @@ app.once('ready', () => {
 </h3>
 </p>
 <p>
-    <img src="frontend/images/dereja.svg" height="310" width="640" alt="Dereja M&E System">
+    <img src="./frontend/images/dereja.svg" height="310" width="640" alt="Dereja M&E System">
 </p>
     </div>
     
@@ -438,7 +442,7 @@ app.once('ready', () => {
     <!-- <iframe src="app/index.html"></iframe> -->
     <!-- <iframe src="https://me.dereja.com/app/login.php"></iframe> -->
     <!--<iframe src="app/frontend/index.html"></iframe>-->
-    <iframe src="./frontend/index.html"></iframe>
+    <iframe src="./frontend/index.html" title="Dereja M&E System"></iframe>
 </body>
 
 </html>
